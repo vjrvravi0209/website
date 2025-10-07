@@ -1,186 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Honeybadgerstudio — Creative Studio & Production</title>
+  <meta name="description" content="Honeybadgerstudio — premium creative studio for brand films, photography, web and digital storytelling." />
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HoneyBadgerStudio - Elevate Your Influence</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <style>
+    :root{
+      --bg-1: #0b0b0d;          /* nearly black */
+      --bg-2: #141416;          /* charcoal */
+      --gold: #d4af37;          /* classic gold */
+      --muted: #bdbdbd;
+      --glass: rgba(255,255,255,0.03);
+      --card: rgba(255,255,255,0.02);
+      --transition: 300ms cubic-bezier(.2,.9,.3,1);
+      --max-width: 1200px;
+    }
 
+    /* Reset + Base */
+    * {box-sizing: border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#eee;
+      line-height:1.45;
+      background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 60%);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
 
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%;display:block}
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:wght@400;700&display=swap"
-      rel="stylesheet" />
+    /* Container */
+    .wrap{max-width:var(--max-width); margin:0 auto; padding:0 24px;}
 
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(10,10,10,0.35), rgba(10,10,10,0.25));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:20px; padding:18px 0;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:44px; width:auto; border-radius:6px; object-fit:cover; box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .brand h1{font-size:18px;margin:0;font-weight:600; letter-spacing:0.2px}
+    nav ul{display:flex; gap:18px; margin:0; padding:0; list-style:none; align-items:center}
+    nav a{color:var(--muted); font-weight:500; padding:8px 10px; border-radius:6px; transition:var(--transition)}
+    nav a:hover{color:#fff; background:rgba(255,255,255,0.02)}
 
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    .social-inline{display:flex; gap:10px; align-items:center}
+    .social-inline a{color:var(--muted); font-size:18px; transition:var(--transition)}
+    .social-inline a:hover{color:var(--gold); transform:translateY(-3px) scale(1.05)}
 
+    /* Hero */
+    .hero{
+      padding:84px 0 64px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:48px;
+      align-items:center;
+    }
+    .hero-left {max-width:720px}
+    .eyebrow{display:inline-block; color:var(--gold); text-transform:uppercase; letter-spacing:1.6px; font-weight:700; font-size:12px; background: rgba(212,175,55,0.06); padding:8px 12px; border-radius:999px; margin-bottom:18px}
+    .hero h2{font-size:44px; margin:0 0 12px; font-weight:700; color:#fff; line-height:1.02}
+    .hero p{color:var(--muted); font-size:16px; margin:0 0 24px; max-width:62ch}
+    .cta-row{display:flex; gap:14px; align-items:center}
+    .btn-gold{
+      background:linear-gradient(180deg, #ffd97a, #d4af37);
+      color:#060606; font-weight:700; padding:12px 20px; border-radius:12px;
+      box-shadow:0 8px 30px rgba(212,175,55,0.12);
+      border:none; cursor:pointer; transition:var(--transition);
+    }
+    .btn-gold:hover{transform:translateY(-4px); box-shadow:0 18px 40px rgba(212,175,55,0.18)}
+    .btn-outline{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); padding:10px 16px; border-radius:10px}
+    .hero-right{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:20px; border-radius:14px; box-shadow: 0 8px 30px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.03)
+    }
+    .meta-card{display:flex; gap:12px; align-items:center}
+    .meta-card .thumb{width:72px; height:72px; border-radius:10px; overflow:hidden; flex:0 0 72px}
+    .meta-card h3{margin:0; font-size:16px}
+    .mini-stats{display:flex; gap:12px; margin-top:14px}
+    .stat{background:var(--card); padding:8px 10px; border-radius:10px; text-align:center; min-width:88px}
+    .stat strong{display:block; font-size:18px; color:#fff}
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    /* Sections */
+    section{padding:72px 0}
+    .section-title{display:flex; align-items:center; gap:16px; justify-content:center; margin-bottom:34px}
+    .section-title h2{margin:0; font-size:28px; color:#fff}
+    .divider{width:86px; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent); border-radius:2px}
 
-    <style>
-      body {
-        font-family: 'Outfit', 'DM Sans', sans-serif;
-        background: linear-gradient(145deg, #f4f4f6 0%, #f9fafb 50%, #eceef1 100%);
-        color: #333;
-      }
+    /* About */
+    .about-grid{display:grid; grid-template-columns: 1fr 420px; gap:36px; align-items:center}
+    .about-box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:26px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
+    .about p{color:var(--muted); font-size:16px}
 
-      .fade-in-up {
-        animation: fadeInUp 1s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
-      }
+    /* Services */
+    .services-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:20px}
+    .service{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:22px; border-radius:12px; transition:var(--transition);
+      display:flex; flex-direction:column; gap:10px; min-height:150px;
+    }
+    .service:hover{transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+    .service .icon{font-size:28px; color:var(--gold); width:46px; height:46px; display:flex; align-items:center; justify-content:center; background:rgba(212,175,55,0.06); border-radius:10px}
 
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    /* Portfolio */
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .port-item{
+      position:relative; overflow:hidden; border-radius:12px; min-height:160px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .port-item img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 450ms ease}
+    .port-item:hover img{transform:scale(1.06)}
+    .port-overlay{
+      position:absolute; inset:0; display:flex; align-items:flex-end; padding:18px; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.6));
+    }
+    .port-title{color:#fff; font-weight:700}
 
-      .cta-float {
-        animation: float 3s ease-in-out infinite;
-      }
+    /* Contact */
+    .contact-grid{display:grid; grid-template-columns: 1fr 420px; gap:28px}
+    .contact-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:24px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
+    .contact-list p{margin:8px 0; color:var(--muted)}
+    .contact-list a{color:var(--gold)}
 
-      @keyframes float {
+    /* Footer */
+    footer{padding:28px 0; border-top:1px solid rgba(255,255,255,0.03); margin-top:18px}
+    .footer-row{display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+    .small{color:var(--muted); font-size:14px}
 
-        0%,
-        100% {
-          transform: translateY(0);
-        }
+    /* Responsive */
+    @media (max-width:1080px){
+      .hero, .about-grid, .contact-grid{grid-template-columns:1fr}
+      .hero-right{order:2}
+      .portfolio-grid{grid-template-columns: repeat(2, 1fr)}
+    }
+    @media (max-width:640px){
+      .brand h1{display:none}
+      nav ul{display:none}
+      .portfolio-grid{grid-template-columns: 1fr}
+      .hero h2{font-size:32px}
+      .eyebrow{font-size:11px}
+    }
 
-        50% {
-          transform: translateY(-5px);
-        }
-      }
+    /* Fancy entrance animations */
+    .fade-up{opacity:0; transform: translateY(14px); animation:fadeUp .7s ease forwards}
+    .delay-1{animation-delay:.12s}
+    .delay-2{animation-delay:.22s}
+    .delay-3{animation-delay:.32s}
+    .delay-4{animation-delay:.42s}
+    .delay-5{animation-delay:.52s}
 
-      .section-bg {
-        background: linear-gradient(to right, #f3f4f6, #e9ecf3);
-      }
+    @keyframes fadeUp{
+      to{opacity:1; transform:none}
+    }
 
-      .service-icon {
-        font-size: 2rem;
-        color: #7c3aed;
-        margin-bottom: 0.5rem;
-      }
+    /* subtle parallax/bg accent */
+    .hero-bg-accent{
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(600px 300px at 10% 20%, rgba(212,175,55,0.04), transparent 12%),
+        radial-gradient(500px 240px at 85% 80%, rgba(100,60,200,0.03), transparent 12%);
+      mix-blend-mode: overlay; z-index:0;
+    }
 
-      .social-links a {
-        margin: 0 0.5rem;
-        transition: all 0.3s ease;
-      }
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .text-gold{color:var(--gold)}
+    .center{text-align:center}
+    .mb-8{margin-bottom:32px}
+  </style>
+</head>
+<body>
 
-      .social-links a:hover {
-        color: #7c3aed;
-        transform: scale(1.2);
-      }
-    </style>
-  </head>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="Logo.jpeg" alt="Honeybadgerstudio Logo" />
+        <h1>Honeybadgerstudio</h1>
+      </div>
 
-  <body class="text-gray-900">
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
 
-    <!-- Header -->
-    <header class="bg-white py-4 shadow-md sticky top-0 z-50">
-      <div class="container mx-auto px-6 flex items-center justify-between">
-        <img src="Logo.jpeg" alt="HoneyBadgerStudio Logo" class="h-12 w-auto" />
-        <div class="social-links flex items-center text-xl text-gray-700">
-          <a href="https://www.instagram.com/honeybadgerstudio"><i class="bi bi-instagram"></i></a>
-          <a href="https://wa.me/919600313523"><i class="bi bi-whatsapp"></i></a>
-          <a href="https://www.facebook.com/honeybadgerstudio"><i class="bi bi-facebook"></i></a>
-          <a href="https://www.youtube.com/channel/UCTHsnGnf2M9TC2sO1QHiidQ"><i class="bi bi-youtube"></i></a>
-          <a href="https://www.linkedin.com/company/honeybadgerstudio/"><i class="bi bi-linkedin"></i></a>
-          <a href="https://www.threads.net/@honeybadgerstudio"><i class="fab fa-threads"></i></a>
-          <a href="https://x.com/honeybadgerstudio"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://pin.it/4gqkbb2J2"><i class="bi bi-pinterest"></i></a>
+      <div class="social-inline" aria-hidden="false">
+        <a href="https://www.instagram.com/honeybadgerstudio" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://wa.me/919360214858" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://www.facebook.com/honeybadgerstudio" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.youtube.com/@honeybadgerstudio" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.linkedin.com/company/honeybadgerstudio" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.threads.net/@honeybadgerstudio" aria-label="Threads"><i class="fab fa-threads"></i></a>
+        <a href="https://x.com/honeybadgerstudio" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://pin.it/4gqkbb2J2" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <div class="hero-bg-accent" aria-hidden="true"></div>
+
+    <section class="wrap hero" style="position:relative; z-index:2;">
+      <div class="hero-left fade-up delay-1">
+        <div class="eyebrow">Honeybadgerstudio</div>
+        <h2>We craft cinematic stories for brands that demand presence.</h2>
+        <p class="muted">Brand films • Premium photography • Web & digital experiences. We combine cinematic direction with strategic thinking to create work that moves people and metrics.</p>
+
+        <div class="cta-row" style="margin-top:18px;">
+          <a href="#contact" class="btn-gold">Start a Project</a>
+          <a href="#portfolio" class="btn-outline">View Portfolio</a>
+        </div>
+
+        <div style="display:flex; gap:20px; margin-top:26px;">
+          <div class="mini-stats">
+            <div class="stat">
+              <strong>12+</strong>
+              <span class="muted" style="font-size:13px">Years combined</span>
+            </div>
+            <div class="stat">
+              <strong>250+</strong>
+              <span class="muted" style="font-size:13px">Projects</span>
+            </div>
+            <div class="stat">
+              <strong>16</strong>
+              <span class="muted" style="font-size:13px">Awards</span>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 py-20 text-center fade-in-up">
-      <div class="container mx-auto px-6">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Grow Your Influence with HoneyBadgerStudio</h1>
-        <p class="text-xl mb-8">Premium social media management, analytics, and content strategy tools.</p>
-        <a href="#services"
-          class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:scale-105 transition-transform">Get
-          Started</a>
-      </div>
+      <aside class="hero-right fade-up delay-2" aria-hidden="false">
+        <div class="meta-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=640&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f0b4f20f4fcf54b1f7f6d0a9b2f1a6c" alt="Studio preview">
+          </div>
+          <div>
+            <h3 style="color:#fff">Boutique Creative Studio</h3>
+            <p class="muted" style="margin:6px 0 0">Cinematic direction, production & post — from concept to launch.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:18px; display:flex; gap:12px;">
+          <div class="about-box">
+            <strong class="muted">Featured</strong>
+            <p style="margin:8px 0 0; color:#fff; font-weight:600">Brand Film — "Natura"</p>
+          </div>
+          <div class="about-box">
+            <strong class="muted">Available</strong>
+            <p style="margin:8px 0 0; color:#fff; font-weight:600">Bookings Q4 — Limited slots</p>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <!-- About Section -->
-    <section class="py-16 section-bg fade-in-up">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">ABOUT HONEYBADGERSTUDIO</h2>
-        <p class="max-w-3xl mx-auto text-gray-700 leading-relaxed">
-          Founded in 2023, HoneyBadgerStudio has rapidly emerged as a trailblazer in the ever-evolving realm of digital
-          marketing and media. From the first click to the final conversion, we embrace innovation at every turn — fueling
-          brands with cutting-edge strategies to stand out in a crowded online world.
-        </p>
-      </div>
-    </section>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="divider"></div>
+          <h2>About Us</h2>
+          <div class="divider"></div>
+        </div>
 
-    <!-- Why Partner Section -->
-    <section class="py-16 bg-white fade-in-up">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-8">Why Partner with HoneyBadgerStudio?</h2>
-        <div class="max-w-4xl mx-auto space-y-4 text-gray-700 text-lg">
-          <p><strong>Seasoned Experts:</strong> A passionate team of digital strategists who live and breathe online
-            marketing.</p>
-          <p><strong>Tailor‑Made Tactics:</strong> Bespoke campaigns aligned with your business ambitions.</p>
-          <p><strong>Insight‑Driven Execution:</strong> Real‑time analytics and data-backed strategies.</p>
-          <p><strong>Outcome‑Oriented:</strong> Every initiative is focused on measurable ROI.</p>
-          <p><strong>Adaptive Service Plans:</strong> Flexible packages to match your growth.</p>
-          <p><strong>Competitive Value:</strong> Premium solutions that suit startups and enterprises alike.</p>
+        <div class="about-grid">
+          <div class="fade-up delay-1">
+            <p style="font-size:18px; color:#fff; margin-bottom:12px">Honeybadgerstudio is a boutique creative studio specialising in cinematic brand storytelling, photography and digital experiences. We partner with visionary founders and established brands to craft work that's beautiful, strategic and measurable.</p>
+
+            <div style="display:flex; gap:16px; margin-top:18px;">
+              <div style="flex:1">
+                <h4 style="margin:0 0 8px" class="text-gold">Philosophy</h4>
+                <p class="muted">Quality over quantity. Narrative-led, production-first approach that prioritises craft.</p>
+              </div>
+              <div style="flex:1">
+                <h4 style="margin:0 0 8px" class="text-gold">Method</h4>
+                <p class="muted">Research → Creative direction → Production → Post → Distribution.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-up delay-2" aria-hidden="false">
+            <div class="about-box">
+              <strong style="color:var(--gold)">Studio Capabilities</strong>
+              <ul style="margin:12px 0 0; padding-left:18px; color:var(--muted)">
+                <li>Brand Films & TVCs</li>
+                <li>Commercial Photography</li>
+                <li>UI & Web Design</li>
+                <li>Social Content Strategy</li>
+                <li>Motion Design & VFX</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Mission -->
-    <section class="py-16 section-bg fade-in-up text-center">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
-        <p class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed">
-          To empower businesses with digital experiences—merging design, storytelling, and data-driven marketing to
-          spark engagement, build trust, and drive measurable growth. <br><br> We’re on a mission to turn clicks into
-          connections and ideas into impact.
-        </p>
-      </div>
-    </section>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrap">
+        <div class="section-title mb-8">
+          <div class="divider"></div>
+          <h2>Services</h2>
+          <div class="divider"></div>
+        </div>
 
-    <!-- Vision -->
-    <section class="py-16 bg-white fade-in-up text-center">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-6">Our Vision</h2>
-        <p class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed">
-          Elevating brands through creative visuals and strategic excellence. <br><br> We envision a digital world where
-          brands don’t just compete—they captivate. At HoneyBadgerStudio, we shape bold brand stories through creativity
-          and innovation.
-        </p>
-      </div>
-    </section>
+        <div class="services-grid fade-up delay-1">
+          <div class="service">
+            <div style="display:flex; align-items:center; gap:12px">
+              <div class="icon"><i class="bi bi-camera-video"></i></div>
+              <div>
+                <h3 style="margin:0; font-size:16px">Brand Films & Direction</h3>
+                <p class="muted" style="margin:6px 0 0; font-size:13px">Concept, production and post-production for cinematic storytelling.</p>
+              </div>
+            </div>
+          </div>
 
-    <!-- Our Clients Section -->
-    <section class="py-16 bg-white fade-in-up">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Our Clients</h2>
-        <p class="text-gray-600 mb-10">We’ve had the privilege of working with these outstanding brands</p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-center">
-          <!-- Client logos here, keep as it is -->
+          <div class="service">
+            <div style="display:flex; align-items:center; gap:12px">
+              <div class="icon"><i class="bi bi-image"></i></div>
+              <div>
+                <h3 style="margin:0; font-size:16px">Commercial Photography</h3>
+                <p class="muted" style="margin:6px 0 0; font-size:13px">Product, lifestyle, editorial — crafted imagery that sells.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service">
+            <div style="display:flex; align-items:center; gap:12px">
+              <div class="icon"><i class="bi bi-display"></i></div>
+              <div>
+                <h3 style="margin:0; font-size:16px">Web & Digital Experiences</h3>
+                <p class="muted" style="margin:6px 0 0; font-size:13px">Elegant sites & landing experiences optimised for conversion.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service">
+            <div style="display:flex; align-items:center; gap:12px">
+              <div class="icon"><i class="bi bi-share"></i></div>
+              <div>
+                <h3 style="margin:0; font-size:16px">Content Strategy & Distribution</h3>
+                <p class="muted" style="margin:6px 0 0; font-size:13px">Platform-first content planning for sustained growth.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="py-16 section-bg fade-in-up">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
-        <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto text-gray-700 text-lg">
-          <div class="bg-white p-6
+    <!-- PORTFOLIO -->
+    <section id="portfolio" style="padding-top:42px">
+      <div class="wrap">
+        <div class="section-title mb-6">
+          <div class="divider"></div>
+          <h2>Portfolio</h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="portfolio-grid fade-up delay-1">
+          <!-- Replace images below with your real project images -->
+          <a class="port-item" href="#!" title="Project 1">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f47b4e3b9b9aa4bbd7b0c09b4b8f3c6" alt="Project 1">
+            <div class="port-overlay"><div><div class="port-title">Project: Natura</div><div class="muted" style="font-size:13px">Brand Film • 2024</div></div></div>
+          </a>
+
+          <a class="port-item" href="#!" title="Project 2">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5f1b9c9f2d5a5b8e6d3e9a6d7f1b8e2a" alt="Project 2">
+            <div class="port-overlay"><div><div class="port-title">Project: Atelier</div><div class="muted" style="font-size:13px">Photography • 2023</div></div></div>
+          </a>
+
+          <a class="port-item" href="#!" title="Project 3">
+            <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1d2a5a2f9e2a5b3f5f3e4c6a7b9d2c9d" alt="Project 3">
+            <div class="port-overlay"><div><div class="port-title">Project: Echo</div><div class="muted" style="font-size:13px">Campaign • 2022</div></div></div>
+          </a>
+
+          <a class="port-item" href="#!" title="Project 4">
+            <img src="https://images.unsplash.com/photo-1485795045112-d25f7f4f52d9?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7c0cfa1b6a2e7b1a4f0b1c0f7e6a3c2d" alt="Project 4">
+            <div class="port-overlay"><div><div class="port-title">Project: Solace</div><div class="muted" style="font-size:13px">Short Film • 2021</div></div></div>
+          </a>
+
+          <a class="port-item" href="#!" title="Project 5">
+            <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6a1a2d3c4e5f6b7c8d9e0f1a2b3c4d5e" alt="Project 5">
+            <div class="port-overlay"><div><div class="port-title">Project: Atelier II</div><div class="muted" style="font-size:13px">Photography • 2024</div></div></div>
+          </a>
+
+          <a class="port-item" href="#!" title="Project 6">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f0b4f20f4fcf54b1f7f6d0a9b2f1a6c" alt="Project 6">
+            <div class="port-overlay"><div><div class="port-title">Project: Meridian</div><div class="muted" style="font-size:13px">Identity • 2023</div></div></div>
+          </a>
+        </div>
+
+        <div style="text-align:center; margin-top:20px;">
+          <a class="btn-outline" href="#contact">Discuss Your Project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-title mb-8">
+          <div class="divider"></div>
+          <h2>Contact</h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="fade-up delay-1">
+            <div class="contact-card">
+              <h3 style="margin:0 0 10px">Let's make something remarkable.</h3>
+              <p class="muted">For enquiries, bookings or creative chats — reach out. We reply within 48 hours on business days.</p>
+
+              <div class="contact-list" style="margin-top:16px;">
+                <p><strong class="text-gold">Email</strong><br><a href="mailto:ravindran@honeybadgerstudio.in">ravindran@honeybadgerstudio.in</a></p>
+                <p><strong class="text-gold">Phone</strong><br><a href="tel:+919360214858">+91 93602 14858</a></p>
+                <p><strong class="text-gold">Studio</strong><br><span class="muted">449, Kamarajar Rd, Near Hope's College, Coimbatore - 641004</span></p>
+              </div>
+
+              <div style="margin-top:18px; display:flex; gap:10px;">
+                <a class="btn-gold" href="https://wa.me/919360214858" target="_blank">WhatsApp</a>
+                <a class="btn-outline" href="mailto:ravindran@honeybadgerstudio.in">Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-up delay-2">
+            <div class="contact-card">
+              <form onsubmit="event.preventDefault(); alert('Thanks — we will respond shortly!');" aria-label="Contact form">
+                <label class="muted" style="display:block; margin-bottom:8px">Your Name</label>
+                <input type="text" required placeholder="Jane Doe" style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff; margin-bottom:12px">
+
+                <label class="muted" style="display:block; margin-bottom:8px">Email</label>
+                <input type="email" required placeholder="hello@yourdomain.com" style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff; margin-bottom:12px">
+
+                <label class="muted" style="display:block; margin-bottom:8px">Project Brief</label>
+                <textarea placeholder="Tell us about your project..." rows="5" style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff; margin-bottom:12px"></textarea>
+
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <button class="btn-gold" type="submit">Send Message</button>
+                  <span class="muted" style="font-size:13px">Or reach via <a class="text-gold" href="https://wa.me/919360214858">WhatsApp</a></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div style="display:flex; gap:14px; align-items:center">
+          <img src="Logo.jpeg" alt="logo" style="height:30px; border-radius:4px">
+          <div>
+            <div style="font-weight:700">Honeybadgerstudio</div>
+            <div class="small muted">Cinematic storytelling & creative production</div>
+          </div>
+        </div>
+
+        <div class="small muted">© <span id="year"></span> Honeybadgerstudio. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for in-page nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Lazy fade-in on scroll
+    const appear = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.style.animationPlayState = 'running';
+      });
+    }, {threshold:0.12});
+    appear.forEach(el => { el.style.animationPlayState='paused'; io.observe(el); });
+  </script>
+</body>
+</html>
