@@ -1,397 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Honey Badger Studio — Coming Soon</title>
-  <meta name="description" content="Honey Badger Studio — new site coming soon. Subscribe for updates." />
-  <meta name="theme-color" content="#ffb03b" />
 
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HoneyBadgerStudio - Elevate Your Influence</title>
 
-  <style>
-    :root{
-      --bg:#0f1724;
-      --card:#ffffff;
-      --accent:#f6a12f;
-      --muted:#98a0aa;
-      --glass: rgba(255,255,255,0.06);
-      --radius:16px;
-      --max-width:980px;
-    }
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(246,161,47,0.08), transparent 8%),
-        radial-gradient(900px 400px at 90% 90%, rgba(17,24,39,0.6), transparent 10%),
-        linear-gradient(180deg,#071124 0%, #0b1530 100%);
-      color:var(--card);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:40px 20px;
-      gap:24px;
-    }
 
-    .container{
-      width:100%;
-      max-width:var(--max-width);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:calc(var(--radius) + 8px);
-      padding:36px;
-      box-shadow: 0 10px 30px rgba(3,7,18,0.6);
-      display:grid;
-      grid-template-columns: 420px 1fr;
-      gap:28px;
-      align-items:center;
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
-    /* Logo panel */
-    .logo-panel{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-      padding:22px;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    }
-    .logo{
-      width:230px;
-      height:230px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      background: linear-gradient(220deg, rgba(255,176,59,0.06), rgba(255,255,255,0.01));
-      box-shadow: 0 6px 18px rgba(4,8,20,0.45);
-      transition:transform .45s cubic-bezier(.2,.9,.2,1);
-      overflow:hidden;
-    }
-    .logo img{
-      width:70%;
-      height:auto;
-      display:block;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
-    }
-    .logo:hover{ transform: translateY(-6px) rotate(-1deg); }
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet" />
 
-    /* Main info */
-    .info{
-      padding:12px 6px;
-    }
-    h1{
-      margin:0 0 8px 0;
-      font-family: "Playfair Display", Georgia, serif;
-      font-weight:600;
-      letter-spacing:0.6px;
-      font-size:32px;
-      color: #ffffff;
-    }
-    p.lead{
-      margin:0 0 18px 0;
-      color:var(--muted);
-      line-height:1.45;
-      font-size:15px;
-    }
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-    /* Countdown */
-    .countdown{
-      display:flex;
-      gap:12px;
-      margin:14px 0 20px 0;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .time-card{
-      min-width:72px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:10px;
-      padding:10px 12px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    .time-card .num{
-      font-weight:700;
-      font-size:20px;
-      color:#fff;
-    }
-    .time-card .label{
-      font-size:12px;
-      color:var(--muted);
-    }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    /* email */
-    .subscribe{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin-bottom:12px;
-      flex-wrap:wrap;
-    }
-    .subscribe input[type="email"]{
-      flex:1 1 260px;
-      min-width:160px;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
-      color: #fff;
-      outline:none;
-      font-size:14px;
-    }
-    .subscribe button{
-      padding:12px 16px;
-      border-radius:10px;
-      border: none;
-      background: linear-gradient(90deg,var(--accent), #f89a2b);
-      color: #08111a;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow: 0 6px 18px rgba(246,161,47,0.12);
-    }
-    .subscribe button:active{ transform:translateY(1px) }
-    .note{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:6px;
-    }
 
-    /* footer / socials */
-    .footer{
-      margin-top:16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .socials{display:flex;gap:8px;align-items:center}
-    .icon{
-      width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
-      background:var(--glass);border:1px solid rgba(255,255,255,0.03);cursor:pointer;
-    }
-    .muted-small{ color: var(--muted); font-size:13px }
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-    /* Success snackbar */
-    .snackbar{
-      position:fixed;
-      left:50%;
-      transform:translateX(-50%) translateY(24px);
-      bottom:24px;
-      background: linear-gradient(90deg,#0b2635,#062a3d);
-      color:#fff;
-      padding:12px 18px;
-      border-radius:10px;
-      box-shadow:0 8px 30px rgba(0,0,0,0.6);
-      display:none;
-      z-index:999;
-    }
+    <style>
+      body {
+        font-family: 'Outfit', 'DM Sans', sans-serif;
+        background: linear-gradient(145deg, #f4f4f6 0%, #f9fafb 50%, #eceef1 100%);
+        color: #333;
+      }
 
-    /* Responsive */
-    @media (max-width:860px){
-      .container{grid-template-columns:1fr; padding:22px;}
-      .logo{width:160px;height:160px}
-      h1{font-size:24px}
-    }
-  </style>
-</head>
-<body>
-  <main class="container" role="main" aria-labelledby="main-title">
-    <section class="logo-panel" aria-hidden="false">
-      <figure class="logo" aria-hidden="true">
-        <!-- Replace path below with your actual file path if needed -->
-        <img src="./WhatsApp Image 2025-09-26 at 3.10.30 PM.jpeg" alt="Honey Badger Studio logo">
-      </figure>
-      <div style="text-align:center">
-        <div style="font-weight:700; font-size:16px; color:#fff">Honey Badger Studio</div>
-        <div style="color:var(--muted); font-size:13px;">Creative studio & production</div>
+      .fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cta-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .section-bg {
+        background: linear-gradient(to right, #f3f4f6, #e9ecf3);
+      }
+
+      .service-icon {
+        font-size: 2rem;
+        color: #7c3aed;
+        margin-bottom: 0.5rem;
+      }
+
+      .social-links a {
+        margin: 0 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #7c3aed;
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+
+  <body class="text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white py-4 shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <img src="HoneyBadgerStudio-Logo.png" alt="HoneyBadgerStudio Logo" class="h-12 w-auto" />
+        <div class="social-links flex items-center text-xl text-gray-700">
+          <a href="https://www.instagram.com/honeybadgerstudio"><i class="bi bi-instagram"></i></a>
+          <a href="https://wa.me/919600313523"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.facebook.com/honeybadgerstudio"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.youtube.com/channel/UCTHsnGnf2M9TC2sO1QHiidQ"><i class="bi bi-youtube"></i></a>
+          <a href="https://www.linkedin.com/company/honeybadgerstudio/"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.threads.net/@honeybadgerstudio"><i class="fab fa-threads"></i></a>
+          <a href="https://x.com/honeybadgerstudio"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://pin.it/4gqkbb2J2"><i class="bi bi-pinterest"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 py-20 text-center fade-in-up">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Grow Your Influence with HoneyBadgerStudio</h1>
+        <p class="text-xl mb-8">Premium social media management, analytics, and content strategy tools.</p>
+        <a href="#services"
+          class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:scale-105 transition-transform">Get
+          Started</a>
       </div>
     </section>
 
-    <section class="info" aria-labelledby="main-title">
-      <h1 id="main-title">We’re launching something bold.</h1>
-      <p class="lead">
-        A fresh studio experience is coming soon — portfolio, services and studio news. Drop your email and we'll let you know the moment we go live.
-      </p>
-
-      <div class="countdown" role="timer" aria-live="polite" aria-atomic="true" id="countdown">
-        <div class="time-card" aria-hidden="false">
-          <div class="num" id="days">--</div>
-          <div class="label">Days</div>
-        </div>
-        <div class="time-card">
-          <div class="num" id="hours">--</div>
-          <div class="label">Hours</div>
-        </div>
-        <div class="time-card">
-          <div class="num" id="minutes">--</div>
-          <div class="label">Minutes</div>
-        </div>
-        <div class="time-card">
-          <div class="num" id="seconds">--</div>
-          <div class="label">Seconds</div>
-        </div>
+    <!-- About Section -->
+    <section class="py-16 section-bg fade-in-up">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">ABOUT HONEYBADGERSTUDIO</h2>
+        <p class="max-w-3xl mx-auto text-gray-700 leading-relaxed">
+          Founded in 2023, HoneyBadgerStudio has rapidly emerged as a trailblazer in the ever-evolving realm of digital
+          marketing and media. From the first click to the final conversion, we embrace innovation at every turn — fueling
+          brands with cutting-edge strategies to stand out in a crowded online world.
+        </p>
       </div>
+    </section>
 
-      <form id="subscribeForm" class="subscribe" onsubmit="return false;" aria-label="Subscribe for updates">
-        <label for="email" class="visually-hidden">Email address</label>
-        <input id="email" type="email" placeholder="Your email address" aria-describedby="emailHelp" required>
-        <button id="subscribeBtn" type="submit">Notify me</button>
-      </form>
-      <div id="emailHelp" class="note">No spam — unsubscribe anytime. We only send launch updates.</div>
-
-      <div class="footer" aria-hidden="false">
-        <div class="muted-small">Estimated launch in <strong id="estDays">-- days</strong></div>
-        <div class="socials" aria-label="Social links">
-          <a class="icon" href="#" title="Instagram" aria-label="Instagram">
-            <!-- small svg instagram -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-opacity="0.14" stroke-width="1.2"/>
-              <circle cx="12" cy="12" r="3.2" stroke="white" stroke-opacity="0.9" stroke-width="1.2"/>
-              <circle cx="17.5" cy="6.5" r="0.7" fill="white" />
-            </svg>
-          </a>
-          <a class="icon" href="#" title="Behance" aria-label="Behance">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-opacity="0.12" stroke-width="1.2"/>
-              <path d="M7 12h3c1 0 1.6.6 1.6 1.4 0 1-.8 1.5-1.8 1.5H7V12z" fill="white" opacity="0.9"/>
-              <path d="M14.6 12.2c2 0 3.4 1.2 3.4 3.1 0 2.2-1.9 3.6-4.1 3.6H11v-8.7h3.6z" fill="white" opacity="0.9"/>
-            </svg>
-          </a>
-          <a class="icon" href="mailto:hello@honeybadger.studio" title="Email" aria-label="Email">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M3 6.5v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-11" stroke="white" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M21 6.5l-9 6-9-6" stroke="white" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+    <!-- Why Partner Section -->
+    <section class="py-16 bg-white fade-in-up">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Why Partner with HoneyBadgerStudio?</h2>
+        <div class="max-w-4xl mx-auto space-y-4 text-gray-700 text-lg">
+          <p><strong>Seasoned Experts:</strong> A passionate team of digital strategists who live and breathe online
+            marketing.</p>
+          <p><strong>Tailor‑Made Tactics:</strong> Bespoke campaigns aligned with your business ambitions.</p>
+          <p><strong>Insight‑Driven Execution:</strong> Real‑time analytics and data-backed strategies.</p>
+          <p><strong>Outcome‑Oriented:</strong> Every initiative is focused on measurable ROI.</p>
+          <p><strong>Adaptive Service Plans:</strong> Flexible packages to match your growth.</p>
+          <p><strong>Competitive Value:</strong> Premium solutions that suit startups and enterprises alike.</p>
         </div>
       </div>
     </section>
-  </main>
 
-  <div class="snackbar" id="snackbar" role="status" aria-live="polite">Saved — you'll be notified.</div>
+    <!-- Mission -->
+    <section class="py-16 section-bg fade-in-up text-center">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
+        <p class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed">
+          To empower businesses with digital experiences—merging design, storytelling, and data-driven marketing to
+          spark engagement, build trust, and drive measurable growth. <br><br> We’re on a mission to turn clicks into
+          connections and ideas into impact.
+        </p>
+      </div>
+    </section>
 
-  <script>
-    // ---------- Countdown setup ----------
-    // Default: set target to 30 days from now (fine for a coming-soon page).
-    // If you want a specific date, replace targetDate with e.g. new Date('2025-12-01T00:00:00')
-    const targetDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+    <!-- Vision -->
+    <section class="py-16 bg-white fade-in-up text-center">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-6">Our Vision</h2>
+        <p class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed">
+          Elevating brands through creative visuals and strategic excellence. <br><br> We envision a digital world where
+          brands don’t just compete—they captivate. At HoneyBadgerStudio, we shape bold brand stories through creativity
+          and innovation.
+        </p>
+      </div>
+    </section>
 
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-    const estDaysEl = document.getElementById('estDays');
+    <!-- Our Clients Section -->
+    <section class="py-16 bg-white fade-in-up">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Our Clients</h2>
+        <p class="text-gray-600 mb-10">We’ve had the privilege of working with these outstanding brands</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-center">
+          <!-- Client logos here, keep as it is -->
+        </div>
+      </div>
+    </section>
 
-    function updateCountdown(){
-      const now = new Date();
-      let diff = Math.max(0, targetDate - now); // milliseconds
-
-      // compute components carefully (digit-by-digit attention)
-      const totalSeconds = Math.floor(diff / 1000);
-      const s = totalSeconds % 60;
-      const totalMinutes = Math.floor(totalSeconds / 60);
-      const m = totalMinutes % 60;
-      const totalHours = Math.floor(totalMinutes / 60);
-      const h = totalHours % 24;
-      const d = Math.floor(totalHours / 24);
-
-      daysEl.textContent = String(d).padStart(2,'0');
-      hoursEl.textContent = String(h).padStart(2,'0');
-      minutesEl.textContent = String(m).padStart(2,'0');
-      secondsEl.textContent = String(s).padStart(2,'0');
-      estDaysEl.textContent = d;
-
-      if (diff <= 0){
-        // launch state
-        document.getElementById('countdown').innerHTML = '<div style="color:var(--accent); font-weight:700">We are live — welcome!</div>';
-      }
-    }
-
-    updateCountdown();
-    const countdownTimer = setInterval(updateCountdown, 1000);
-
-    // ---------- Subscription handling ----------
-    const form = document.getElementById('subscribeForm');
-    const emailInput = document.getElementById('email');
-    const snackbar = document.getElementById('snackbar');
-
-    function showSnackbar(msg = 'Saved — you will be notified.'){
-      snackbar.textContent = msg;
-      snackbar.style.display = 'block';
-      snackbar.style.opacity = 0;
-      snackbar.animate([{opacity:0, transform:'translateY(8px)'}, {opacity:1, transform:'translateY(0)'}], {duration:260, fill:'forwards'});
-      setTimeout(()=> {
-        snackbar.animate([{opacity:1, transform:'translateY(0)'}, {opacity:0, transform:'translateY(8px)'}], {duration:260, fill:'forwards'});
-        setTimeout(()=> snackbar.style.display='none', 260);
-      }, 2800);
-    }
-
-    function isValidEmail(email){
-      // simple, robust check
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const email = emailInput.value.trim();
-
-      if (!isValidEmail(email)){
-        showSnackbar('Please enter a valid email address.');
-        emailInput.focus();
-        return;
-      }
-
-      try {
-        // store locally; in real site you would send to your backend or email platform
-        const saved = JSON.parse(localStorage.getItem('hb_subscribers') || '[]');
-        if (!saved.includes(email)){
-          saved.push(email);
-          localStorage.setItem('hb_subscribers', JSON.stringify(saved));
-        }
-        emailInput.value = '';
-        showSnackbar('Thanks — we\'ll notify you at ' + email + '.');
-      } catch (err){
-        console.error(err);
-        showSnackbar('Could not save — please try again later.');
-      }
-    });
-
-    // Allow pressing Enter while focus in the input to submit
-    emailInput.addEventListener('keydown', function(e){
-      if (e.key === 'Enter') form.dispatchEvent(new Event('submit', {cancelable:true}));
-    });
-
-    // Accessibility helper - visually-hidden text for label
-    (function addVisuallyHiddenStyles(){
-      const css = '.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}';
-      const s = document.createElement('style'); s.appendChild(document.createTextNode(css)); document.head.appendChild(s);
-    })();
-
-    // ---------- Optional: prefill email if seen before ----------
-    (function prefill() {
-      try {
-        const stored = JSON.parse(localStorage.getItem('hb_subscribers') || '[]');
-        if (Array.isArray(stored) && stored.length){
-          // show the most recent saved email as subtle placeholder
-          emailInput.placeholder = 'Stay updated — ' + stored[stored.length - 1];
-        }
-      } catch(e){}
-    })();
-
-    // Clean up interval on page unload (good practice)
-    window.addEventListener('beforeunload', ()=> clearInterval(countdownTimer));
-  </script>
-</body>
-</html>
+    <!-- Services -->
+    <section id="services" class="py-16 section-bg fade-in-up">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+        <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto text-gray-700 text-lg">
+          <div class="bg-white p-6
