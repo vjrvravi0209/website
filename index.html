@@ -2,16 +2,13 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honeybadgerstudio — Modern Portfolio</title>
     <meta name="description"
-      content="Honeybadgerstudio — modern creative portfolio for brand films, photography, web and digital experiences." />
+      content="Honeybadgerstudio — modern creative portfolio for brand films, photography, web and digital experiences.">
 
-    <!-- Fonts & Icons -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Outfit:wght@400;600&display=swap"
-      rel="stylesheet">
+    <!-- Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -35,7 +32,7 @@
       }
 
       body {
-        font-family: 'Poppins', 'Outfit', sans-serif;
+        font-family: 'Poppins', sans-serif;
         color: #eee;
         background: var(--bg-dark);
         line-height: 1.5;
@@ -52,14 +49,12 @@
         display: block;
       }
 
-      /* Container */
       .wrap {
         max-width: var(--max-width);
         margin: 0 auto;
         padding: 0 24px;
       }
 
-      /* Header */
       header {
         position: sticky;
         top: 0;
@@ -105,35 +100,37 @@
         background: rgba(255, 255, 255, 0.05);
       }
 
-      /* Hero Section */
       .hero {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 50px;
-        position: relative;
+        justify-content: center;
+        text-align: center;
         padding: 0 24px;
         background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-dark) 100%);
+        flex-direction: column;
+        gap: 20px;
       }
 
-      .hero-left h1 {
+      .hero h1 {
         font-size: 3rem;
         margin-bottom: 16px;
         font-weight: 700;
         line-height: 1.1;
       }
 
-      .hero-left p {
+      .hero p {
         color: var(--muted);
         font-size: 1.1rem;
         max-width: 550px;
         margin-bottom: 24px;
       }
 
-      .hero-left .cta-row {
+      .cta-row {
         display: flex;
         gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .btn-gold,
@@ -166,7 +163,6 @@
         color: #fff;
       }
 
-      /* Sections */
       section {
         padding: 80px 0;
       }
@@ -192,7 +188,9 @@
 
       .about-grid,
       .services-grid,
-      .contact-grid {
+      .other-services-grid,
+      .contact-grid,
+      .clients-grid {
         display: grid;
         gap: 36px;
       }
@@ -213,8 +211,8 @@
         margin-bottom: 8px;
       }
 
-      /* Services */
-      .services-grid {
+      .services-grid,
+      .other-services-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
 
@@ -225,6 +223,7 @@
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.05);
         transition: transform 0.3s;
+        text-align: center;
       }
 
       .service:hover,
@@ -244,6 +243,8 @@
         background: rgba(212, 175, 55, 0.07);
         border-radius: 12px;
         margin-bottom: 12px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .service-card h3 {
@@ -257,7 +258,6 @@
         line-height: 1.5;
       }
 
-      /* Contact */
       .contact-card input,
       .contact-card textarea {
         width: 100%;
@@ -273,7 +273,6 @@
         cursor: pointer;
       }
 
-      /* Footer */
       footer {
         padding: 28px 0;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -282,7 +281,37 @@
         font-size: 14px;
       }
 
-      /* Animations */
+      /* Floating Buttons */
+      .float-btns {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 200;
+      }
+
+      .float-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: #060606;
+        font-size: 22px;
+        transition: 0.3s;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .float-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+      }
+
       .fade-up {
         opacity: 0;
         transform: translateY(20px);
@@ -308,9 +337,7 @@
         }
       }
 
-      /* Clients Section */
       .clients-grid {
-        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 24px;
         align-items: center;
@@ -329,15 +356,13 @@
         transform: scale(1.1);
       }
 
-      /* Responsive */
       @media (max-width: 768px) {
-        .hero {
-          flex-direction: column;
-          text-align: center;
+        .hero h1 {
+          font-size: 2.2rem;
         }
 
-        .hero-left h1 {
-          font-size: 2.2rem;
+        .hero {
+          padding: 60px 24px;
         }
       }
     </style>
@@ -355,6 +380,10 @@
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#why-partner">Why Partner</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#clients">Clients</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -363,14 +392,12 @@
     </header>
 
     <!-- Hero -->
-    <section id="home" class="hero">
-      <div class="hero-left fade-up delay-1">
-        <h1>Grow Your Influence with Honeybadgerstudio</h1>
-        <p>Premium social media management, analytics, and content strategy tools.</p>
-        <div class="cta-row">
-          <a class="btn-gold" href="#contact">Start a Project</a>
-          <a class="btn-outline" href="#services">View Services</a>
-        </div>
+    <section id="home" class="hero fade-up delay-1">
+      <h1>Grow Your Influence with Honeybadgerstudio</h1>
+      <p>Premium social media management, analytics, and content strategy tools.</p>
+      <div class="cta-row">
+        <a class="btn-gold" href="#contact">Start a Project</a>
+        <a class="btn-outline" href="#services">View Services</a>
       </div>
     </section>
 
@@ -383,13 +410,9 @@
         </div>
         <div class="about-grid fade-up delay-1">
           <div class="about-box">
-            <p>
-              Founded in 2023, <strong>Advice On Digital</strong> has rapidly emerged as a trailblazer in the
-              ever-evolving realm of digital marketing and media. From the first click to the final conversion, we
-              embrace
-              innovation at every turn — fueling brands with cutting-edge strategies to stand out in a crowded online
-              world.
-            </p>
+            <p>Founded in 2023, <strong>Advice On Digital</strong> has rapidly emerged as a trailblazer in digital
+              marketing and media. We embrace innovation at every turn, fueling brands with cutting-edge strategies to
+              stand out online.</p>
           </div>
         </div>
       </div>
@@ -402,119 +425,79 @@
           <h2>Why Partner with Advice On Digital?</h2>
           <div class="divider"></div>
         </div>
-
         <div class="services-grid fade-up delay-1">
           <div class="service">
-            <h3 style="margin:0; font-size:16px">Seasoned Experts</h3>
-            <p class="muted" style="margin:6px 0 0; font-size:13px">A passionate team of digital strategists who live
-              and
-              breathe online marketing.</p>
+            <h3>Seasoned Experts</h3>
+            <p>A passionate team of digital strategists who live and breathe online marketing.</p>
           </div>
-
           <div class="service">
-            <h3 style="margin:0; font-size:16px">Tailor‑Made Tactics</h3>
-            <p class="muted" style="margin:6px 0 0; font-size:13px">Bespoke campaigns aligned with your business
-              ambitions.</p>
+            <h3>Tailor‑Made Tactics</h3>
+            <p>Bespoke campaigns aligned with your business ambitions.</p>
           </div>
-
           <div class="service">
-            <h3 style="margin:0; font-size:16px">Insight‑Driven Execution</h3>
-            <p class="muted" style="margin:6px 0 0; font-size:13px">Real-time analytics and data-backed strategies.</p>
+            <h3>Insight‑Driven Execution</h3>
+            <p>Real-time analytics and data-backed strategies.</p>
           </div>
-
           <div class="service">
-            <h3 style="margin:0; font-size:16px">Outcome‑Oriented</h3>
-            <p class="muted" style="margin:6px 0 0; font-size:13px">Every initiative is focused on measurable ROI.</p>
+            <h3>Outcome‑Oriented</h3>
+            <p>Every initiative is focused on measurable ROI.</p>
           </div>
-
           <div class="service">
-            <h3 style="margin:0; font-size:16px">Adaptive Service Plans</h3>
-            <p class="muted" style="margin:6px 0 0; font-size:13px">Flexible packages to match your growth.</p>
+            <h3>Adaptive Service Plans</h3>
+            <p>Flexible packages to match your growth.</p>
           </div>
-
           <div class="service">
-            <h3 style="margin:0; font-size:16px">Competitive Value</h3>
-            <p class="muted" style="margin:6px 0 0; font-size:13px">Premium solutions that suit startups and enterprises
-              alike.</p>
+            <h3>Competitive Value</h3>
+            <p>Premium solutions that suit startups and enterprises alike.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Our Mission -->
+    <!-- Mission -->
     <section id="mission" style="background: linear-gradient(180deg, #0b0b0d 0%, #141416 100%);">
       <div class="wrap">
         <div class="section-title">
           <h2>Our Mission</h2>
           <div class="divider"></div>
         </div>
-
-        <div class="fade-up delay-1" style="text-align:center; max-width:720px; margin:0 auto;">
-          <p style="font-size:18px; color:#fff; margin-bottom:16px;">
-            To empower businesses with digital experiences—merging design, storytelling, and data-driven marketing to
-            spark
-            engagement, build trust, and drive measurable growth.
-          </p>
-          <p class="muted" style="font-size:16px; margin-top:0;">
-            We’re on a mission to turn clicks into connections and ideas into impact.
-          </p>
-        </div>
+        <p style="text-align:center; max-width:720px; margin:0 auto; font-size:18px; color:#fff;">To empower businesses
+          with digital experiences—merging design, storytelling, and data-driven marketing to spark engagement, build
+          trust, and drive measurable growth.</p>
       </div>
     </section>
 
-    <!-- Our Vision -->
+    <!-- Vision -->
     <section id="vision" style="background: linear-gradient(180deg, #141416 0%, #0b0b0d 100%);">
       <div class="wrap">
         <div class="section-title">
           <h2>Our Vision</h2>
           <div class="divider"></div>
         </div>
-
-        <div class="fade-up delay-1" style="text-align:center; max-width:720px; margin:0 auto;">
-          <p style="font-size:18px; color:#fff; margin-bottom:16px;">
-            Elevating brands through creative visuals and strategic excellence.
-          </p>
-          <p class="muted" style="font-size:16px; margin-top:0;">
-            We envision a digital world where brands don’t just compete—they captivate. At Advice On Digital, we shape
-            bold
-            brand stories through creativity and innovation.
-          </p>
-        </div>
+        <p style="text-align:center; max-width:720px; margin:0 auto; font-size:18px; color:#fff;">Elevating brands
+          through creative visuals and strategic excellence. We envision a digital world where brands captivate rather
+          than compete.</p>
       </div>
     </section>
 
-    <!-- Our Clients -->
-    <section id="clients" style="background: linear-gradient(180deg, #0b0b0d 0%, #141416 100%); padding: 80px 0;">
+    <!-- Clients -->
+    <section id="clients" style="background: linear-gradient(180deg, #0b0b0d 0%, #141416 100%);">
       <div class="wrap">
         <div class="section-title">
           <h2>Our Clients</h2>
           <div class="divider"></div>
         </div>
-
-        <p class="muted center"
-          style="text-align:center; margin-bottom:40px; max-width:720px; margin-left:auto; margin-right:auto;">
-          We’ve had the privilege of working with these outstanding brands.
-        </p>
-
         <div class="clients-grid fade-up">
           <img src="logos/ap.png" alt="AP">
           <img src="logos/apollo_dental.png" alt="Apollo Dental">
           <img src="logos/apollo_sugar.png" alt="Apollo Sugar">
-          <img src="logos/artboard.png" alt="Artboard">
+          <!-- <img src="logos/artboard.png" alt="Artboard"> -->
           <img src="logos/billy_ball.png" alt="Billy Ball">
           <img src="logos/clusters.png" alt="Clusters">
-          <img src="logos/collars_sleeves.png" alt="Collars & Sleeves">
+          <!-- <img src="logos/collars_sleeves.png" alt="Collars & Sleeves"> -->
           <img src="logos/crush_on_cakez.png" alt="Crush on Cakez">
           <img src="logos/d_square.png" alt="D Square">
-          <img src="logos/elixir_mix.png" alt="Elixir Mix">
-          <img src="logos/fitness.png" alt="Fitness">
-          <img src="logos/indira.png" alt="Indira">
-          <img src="logos/mcc.png" alt="MCC">
-          <img src="logos/no_food_waste.png" alt="No Food Waste">
-          <img src="logos/people_home.png" alt="People Home">
-          <img src="logos/sara.png" alt="Sara">
-          <img src="logos/sri.png" alt="Sri">
-          <img src="logos/suresh.png" alt="Suresh">
+          <!-- <img src="logos/elixir_mix.png" alt="Elixir Mix"> -->
         </div>
       </div>
     </section>
@@ -523,22 +506,43 @@
     <section id="services">
       <div class="wrap">
         <div class="section-title">
-          <h2>Services</h2>
+          <h2>Our Services</h2>
           <div class="divider"></div>
         </div>
-
-        <div class="services-grid fade-up delay-1">
+        <div class="services-grid fade-up">
           <div class="service-card">
-            <h3>Brand Films</h3>
-            <p>Create cinematic storytelling videos for brands with high production value.</p>
+            <h3>LEAD GENERATION CAMPAIGNS</h3>
+            <p>Targeted lead-generation campaigns across platforms tailored to your budget.</p>
           </div>
           <div class="service-card">
-            <h3>Photography</h3>
-            <p>Premium studio and on-location photography tailored to brand identity.</p>
+            <h3>GOOGLE MY BUSINESS PROFILE</h3>
+            <p>Setup and optimization to boost your local search visibility.</p>
           </div>
           <div class="service-card">
-            <h3>Web & Digital Experiences</h3>
-            <p>Modern websites and digital campaigns that convert visitors into customers.</p>
+            <h3>SEO STRATEGY</h3>
+            <p>Comprehensive SEO strategies for long-term organic growth.</p>
+          </div>
+          <div class="service-card">
+            <h3>WEBSITE DEVELOPMENT</h3>
+            <p>Custom-built, responsive websites designed to perform and convert.</p>
+          </div>
+        </div>
+        <div class="other-services-grid fade-up" style="margin-top:40px;">
+          <div class="service-card">
+            <h3>WEDDING SHOOTS</h3>
+            <p>Cinematic photography and videography for your big day.</p>
+          </div>
+          <div class="service-card">
+            <h3>PHOTO SHOOTS</h3>
+            <p>Striking portrait, product, and lifestyle photography.</p>
+          </div>
+          <div class="service-card">
+            <h3>VIDEO SHOOTS</h3>
+            <p>Corporate, event, and brand storytelling video creation.</p>
+          </div>
+          <div class="service-card">
+            <h3>VIDEO EDITING</h3>
+            <p>Professional editing with motion graphics and color grading.</p>
           </div>
         </div>
       </div>
@@ -551,14 +555,22 @@
           <h2>Contact Us</h2>
           <div class="divider"></div>
         </div>
-
-        <div class="contact-grid fade-up delay-1" style="grid-template-columns: repeat(auto-fit,minmax(300px,1fr));">
-          <div class="contact-card">
-            <input type="text" placeholder="Your Name" />
-            <input type="email" placeholder="Email Address" />
-            <input type="text" placeholder="Subject" />
-            <textarea rows="5" placeholder="Message"></textarea>
-            <button class="btn-gold">Send Message</button>
+        <div class="contact-grid fade-up" style="grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:24px;">
+          <div class="contact-card"
+            style="background: var(--card); padding:24px; border-radius:14px; border:1px solid rgba(255,255,255,0.05);">
+            <h3>Email & Phone</h3>
+            <p>Email: <a href="mailto:ravindran@honeybadgerstudio.in">ravindran@honeybadgerstudio.in</a></p>
+            <p>Phone: <a href="tel:+919360214858">+91 93602 14858</a></p>
+          </div>
+          <div class="contact-card"
+            style="background: var(--card); padding:24px; border-radius:14px; border:1px solid rgba(255,255,255,0.05);">
+            <h3>Contact Form</h3>
+            <form>
+              <input type="text" placeholder="Your Name" required>
+              <input type="email" placeholder="Email" required>
+              <textarea rows="4" placeholder="Message"></textarea>
+              <button class="btn-gold" type="submit">Send Message</button>
+            </form>
           </div>
         </div>
       </div>
@@ -569,15 +581,47 @@
       &copy; 2025 Honeybadgerstudio. All Rights Reserved.
     </footer>
 
-    <script>
-      // Smooth scroll for navigation
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-    </script>
+    <!-- Floating Buttons -->
+    <div class="float-btns">
+      <a class="float-btn" href="https://wa.me/919360214858" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+    
+    <!-- Optional CSS for better effect -->
+    <style>
+      .float-btns {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 200;
+      }
+    
+      .float-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #25d366;
+        /* WhatsApp green */
+        color: #fff;
+        font-size: 28px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+    
+      .float-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+    </style>
+
+
   </body>
 
 </html>
